@@ -23,7 +23,8 @@
           <label>Username</label>
           <input type="text" name="username" formControlName="username" class="form-control"  [ngClass]="{'is-invalid':saveform && f.username.errors}"> 
           <div *ngIf="saveform && f.username.errors" class="invalid-feedback">
-              <div *ngIf="f.username.errors.required">This field is required</div>
+                <div *ngIf="f.username.errors.required">This field is required</div>
+              <div *ngIf="f.username.errors.pattern">Pattern is wrong</div>
           </div>
       </div>
       <div class="form-group">

@@ -7,16 +7,16 @@ import  {SignupService} from '../signup.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-
+  unamePattern = "^[a-z0-9_-]{8,15}$";
   signUpForm:FormGroup;
   saveform=false;
   constructor(private fb:FormBuilder,private signservice:SignupService) { }
-
   ngOnInit() {
+    
     this.signUpForm=this.fb.group({
       firstname:['',Validators.required],
       lastname:['',Validators.required],
-      username:['',Validators.required],
+      username:['',[Validators.required,Validators.pattern(this.unamePattern)]],
       password:['',Validators.required]
     })
   }
