@@ -1,3 +1,29 @@
-<p>
-  login works!
-</p>
+<div class="jumbotron">
+<div class="container">
+<div  class="row">
+<div class="col-sm-6 offset-sm-3">
+<h2>Login Form</h2>
+<form [formGroup]="loginfrm" (ngSubmit)="onLogin()">
+<div class="form-group">
+  <label>User Name</label>
+  <input type="text" name="username" formControlName="username" [ngClass]="{'is-invalid':loginsubmit && f.username.errors}" class="form-control">
+  <div *ngIf="loginsubmit && f.username.errors">
+      <div *ngIf="loginsubmit && f.username.errors.reqired">This field is required</div>
+  </div>
+</div>
+<div class="form-group">
+    <label>Password</label>
+    <input type="password" name="password" formControlName="password" [ngClass]="{'is-invalid':loginsubmit && f.password.errors}" class="form-control">
+    <div *ngIf="loginsubmit && f.password.errors">
+        <div *ngIf="loginsubmit && f.password.errors.reqired">This field is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+      <button type="submit" class="btn btn-primary">Login</button>
+      <a href="/signup" class="btn btn-link">Register</a>
+  </div>
+</form>
+</div>
+</div>
+</div>
+</div>

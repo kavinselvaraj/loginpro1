@@ -28,11 +28,20 @@
           </div>
       </div>
       <div class="form-group">
-          <label>password</label>
-          <input type="text" name="password" formControlName="password" class="form-control"  [ngClass]="{'is-invalid':saveform && f.password.errors}">
+          <label>Password</label>
+          <input type="password" name="password" formControlName="password" class="form-control"  [ngClass]="{'is-invalid':saveform && f.password.errors}">
           <div *ngIf="saveform && f.password.errors" class="invalid-feedback">
               <div *ngIf="f.password.errors.required">This field is required</div>
           </div>
+      </div>
+      <div class="form-group">
+          <label>Confirm Password</label>
+          <input type="password" name="cpassword" formControlName="cpassword" class="form-control"  [ngClass]="{'is-invalid':saveform && f.cpassword.errors}">
+          <div *ngIf="saveform && f.cpassword.errors" class="invalid-feedback">
+              <div *ngIf="f.cpassword.errors.required">This field is required</div>
+              <div *ngIf="f.cpassword.errors.mustMatch">Password must match</div>
+          </div>
+          
       </div>
       <div class="form-group">
         <button class="btn btn-primary" type="submit">Save</button>
