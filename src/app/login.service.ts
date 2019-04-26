@@ -10,7 +10,7 @@ export class LoginService {
 
   login(value){
     console.log(value)
-    this._http.post("http://localhost:3200/signup/login_user",value).pipe(map(res=>{
+    this._http.post("http://localhost:3200/signup/_user",value).pipe(map(res=>{
       console.log(res);
       return res;
     }))
