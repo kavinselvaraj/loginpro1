@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup,Validators} from '@angular/forms';
 import  {SignupService} from '../signup.service';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -10,15 +11,16 @@ export class SignupComponent implements OnInit {
   unamePattern = "^(?=(?:.*[A-Z].*){2})(?!(?:.*[A-Z].*){3,})(?=(?:.*[@#$%^!&*+=]){3})(?!.{10,})(?=.{6}).*$";
   signUpForm:FormGroup;
   saveform=false;
-  constructor(private fb:FormBuilder,private signservice:SignupService) { }
+  constructor(private fb:FormBuilder,private signservice:SignupService,private router:Router) { }
   ngOnInit() {
     
     this.signUpForm=this.fb.group({
       firstname:['',Validators.required],
       lastname:['',Validators.required],
       username:['',[Validators.required,Validators.pattern(this.unamePattern)]],
+      roleoption:['',Validators.required],
       password:['',Validators.required],
-      cpassword:['',Validators.required]
+      cpassword:['',Validators.required]  
     },{
       validator:this.MustMatch()
     })
@@ -47,6 +49,9 @@ export class SignupComponent implements OnInit {
    }
   this.signservice.signup(this.signUpForm.value).subscribe(data=>{
     console.log(data)
+    if(data['message']=='ok'){
+      this.router.navigate(['/login']);
+    }
   });
   }
 }

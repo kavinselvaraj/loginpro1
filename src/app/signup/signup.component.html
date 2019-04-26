@@ -10,7 +10,6 @@
           <div *ngIf="saveform && f.firstname.errors" class="invalid-feedback">
               <div *ngIf="f.firstname.errors.required">This field is required</div>
           </div>
-          
       </div>
       <div class="form-group">
           <label>Lastname</label>
@@ -28,6 +27,17 @@
           </div>
       </div>
       <div class="form-group">
+          <label>Role</label>
+          <select formControlName="roleoption" class="form-control" [ngClass]="{'is-invalid':saveform && f.roleoption.errors}">
+              <option value="1">Admin</option>
+              <option value="2">User</option>
+          </select>
+          <div *ngIf="saveform && f.roleoption.errors" class="invalid-feedback">
+                <div *ngIf="f.roleoption.errors.required">This field is required</div>
+              <div *ngIf="f.roleoption.errors.pattern">Pattern is wrong</div>
+          </div>
+      </div>
+      <div class="form-group">
           <label>Password</label>
           <input type="password" name="password" formControlName="password" class="form-control"  [ngClass]="{'is-invalid':saveform && f.password.errors}">
           <div *ngIf="saveform && f.password.errors" class="invalid-feedback">
@@ -36,18 +46,17 @@
       </div>
       <div class="form-group">
           <label>Confirm Password</label>
+          <!-- <show-hide-password size="lg" btnStyle="primary" [btnOutline]="false"> -->
           <input type="password" name="cpassword" formControlName="cpassword" class="form-control"  [ngClass]="{'is-invalid':saveform && f.cpassword.errors}">
+          <!-- </show-hide-password> -->
           <div *ngIf="saveform && f.cpassword.errors" class="invalid-feedback">
               <div *ngIf="f.cpassword.errors.required">This field is required</div>
               <div *ngIf="f.cpassword.errors.mustMatch">Password must match</div>
-          </div>
-          
+          </div>   
       </div>
       <div class="form-group">
         <button class="btn btn-primary" type="submit">Save</button>
       </div>
-    
-    
     </form>
 </div>
 </div>

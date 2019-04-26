@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder,Validator, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LoginService} from '../login.service';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,7 +10,8 @@ import {LoginService} from '../login.service';
 export class LoginComponent implements OnInit {
    loginfrm:FormGroup;
    loginsubmit=false;
-  constructor(private fb:FormBuilder,private logservice:LoginService) { }
+   loading=true;
+  constructor(private fb:FormBuilder,private logservice:LoginService,private router:Router) { }
 
   ngOnInit() {
     this.loginfrm=this.fb.group(
@@ -18,13 +20,22 @@ export class LoginComponent implements OnInit {
         password:['',Validators.required]
       })
   }
-  get f(){return this.loginfrm.controls;}
+  get f(){return this.loginfrm.controls}
 
   onLogin(){
     this.loginsubmit=true;
-    if(this.loginfrm.invalid){return}
-    this.logservice.login(this.loginfrm.value).subscribe(data=>{
-      console.log(data)
-    })
-  }
+    if(this.loginfrm.invalid){
+      return;
+    }
+   this.logservice.login(this.loginfrm.value).subscribe(data=>{
+     console.log(data)
+     if(data['message']=='ok' && data['result'] !=''){
+      this.router.navigate(['/dashboard']);
+     }
+     else{
+      this.loading=false;
+       console.log("else")
+     }
+   });
+   }
 }

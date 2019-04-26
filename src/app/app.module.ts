@@ -8,15 +8,27 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import {SignupService} from './signup.service';
 import {LoginService} from './login.service';
+import { ShowHidePasswordModule } from 'ngx-show-hide-password';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent,
+    HeaderComponent,
+    FooterComponent,
+    AboutUsComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
+    ShowHidePasswordModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
