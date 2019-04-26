@@ -9,10 +9,12 @@ export class LoginService {
   constructor(private _http:HttpClient) { }
 
   login(value){
-    console.log(value)
-    this._http.post("http://localhost:3200/signup/login_user",value).pipe(map(res=>{
-      console.log(res);
+   return this._http.post('http://localhost:3200/signup/login_user',value).pipe(map(res=> {
+     if(res['message']=='ok'){
       return res;
-    }))
+     }
+    
+    }));
   }
+
 }

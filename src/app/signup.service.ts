@@ -8,11 +8,13 @@ export class SignupService {
 
   constructor(private _http:HttpClient) { }
 
-  signup(value){
-    console.log(value)
+ public signup(value){
    return this._http.post('http://localhost:3200/signup/add_user',value).pipe(map(res=> {
      console.log(res)
-     return res
+     if(res['message']=='ok'){
+      return res;
+     }
+    
     }));
   }
 
