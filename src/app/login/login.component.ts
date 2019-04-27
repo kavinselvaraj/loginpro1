@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
         password:['',Validators.required]
       })
   }
-  get f(){return this.loginfrm.controls}
+  get f(){return this.loginfrm.controls;}
 
   onLogin(){
     this.loginsubmit=true;
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/dashboard']);
      }
      else{
-      this.loading=false;
+       this.loading=false;
        console.log("else")
      }
    });

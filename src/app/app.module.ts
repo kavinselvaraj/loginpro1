@@ -14,7 +14,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
-
+import {AuthGuard} from './auth.guard'
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +34,7 @@ import { ContactComponent } from './contact/contact.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [SignupService,LoginService],
+  providers: [SignupService,LoginService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
