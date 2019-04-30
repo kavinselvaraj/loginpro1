@@ -14,7 +14,8 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
-import {AuthGuard} from './auth.guard'
+import {AuthGuard} from './auth.guard';
+import { AddPostComponent } from './add-post/add-post.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import {AuthGuard} from './auth.guard'
     HeaderComponent,
     FooterComponent,
     AboutUsComponent,
-    ContactComponent
+    ContactComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,
