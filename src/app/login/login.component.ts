@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
       return;
     }
    this.logservice.login(this.loginfrm.value).subscribe(data=>{
-     console.log(data)
      if(data['message']=='ok' && data['result'] !=''){
       this.router.navigate(['/dashboard']);
      }

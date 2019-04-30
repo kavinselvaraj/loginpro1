@@ -16,6 +16,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
 import {AuthGuard} from './auth.guard';
 import { AddPostComponent } from './add-post/add-post.component';
+import {ImageUploadService} from './image-upload.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,7 @@ import { AddPostComponent } from './add-post/add-post.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [SignupService,LoginService,AuthGuard],
+  providers: [SignupService,LoginService,AuthGuard,ImageUploadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
