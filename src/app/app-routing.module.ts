@@ -6,6 +6,7 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {ContactComponent} from './contact/contact.component';
 import {AboutUsComponent} from './about-us/about-us.component';
 import{AuthGuard} from './auth.guard';
+import { AddPostComponent } from './add-post/add-post.component';
 export enum Role {
   User = 'user',
   Admin = 'admin'
@@ -32,11 +33,9 @@ const routes: Routes = [
   canActivate: [AuthGuard]
 },
 {
-  path:'about',
-  component:AboutUsComponent,
-  canActivate: [AuthGuard], 
-  data: { roles: [Role.Admin] 
-  } 
+  path:'post',
+  component:AddPostComponent,
+  canActivate: [AuthGuard] 
 },
 {
   path:'contact',component:ContactComponent,

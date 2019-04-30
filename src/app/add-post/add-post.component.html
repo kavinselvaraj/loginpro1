@@ -1,0 +1,36 @@
+<app-header></app-header>
+<h2>Add Post</h2>
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 offset-sm-3">
+        <form [formGroup]="addpostform" (ngSubmit)="addpost()">
+          <div class="form-group">
+              <label>Title</label>
+              <input type="text" formControlName="title" name="title" class="form-control" [ngClass]="{'is-invalid':postsubmit && f.title.errors}">
+              <div *ngIf="postsubmit && f.title.errors" class="invalid-feedback">
+                <div *ngIf="f.title.errors.required">This field is requirred</div>
+              </div>
+          </div>
+          <div class="form-group">
+              <label>Description</label>
+              <input type="text" formControlName="description" name="description" class="form-control" [ngClass]="{'is-invalid':postsubmit && f.description.errors}">
+              <div *ngIf="postsubmit && f.description.errors" class="invalid-feedback">
+                <div *ngIf="f.description.errors.required">This field is requirred</div>
+              </div>
+          </div>
+          <div class="form-group">
+              <label>Image</label>
+              <input type="file" formControlName="image" name="image" class="form-control" [ngClass]="{'is-invalid':postsubmit && f.image.errors}" (change)="handleInputChange($event)">
+              <div *ngIf="postsubmit && f.image.errors" class="invalid-feedback">
+                <div *ngIf="f.image.errors.required">This field is requirred</div>
+              </div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
