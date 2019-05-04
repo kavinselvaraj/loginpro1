@@ -42,6 +42,6 @@ export class LoginService {
   logout(){
     this.router.navigateByUrl('/login');
     localStorage.removeItem('role')
-    this.currentUserSubject.next(null);
+    //this.currentUserSubject.next(null);
   }
 }

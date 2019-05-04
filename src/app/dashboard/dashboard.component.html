@@ -1,5 +1,38 @@
 <app-header></app-header>
-<p>
-  dashboard works!
-</p>
+       <div class="jumbotron">
+         <button class="btn btn-primary" routerLink="/post">Add Post</button>
+            <mat-form-field>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+              </mat-form-field>
+              
+              <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+                    
+                <!-- Position Column -->
+                <ng-container matColumnDef="id">
+                  <th mat-header-cell *matHeaderCellDef> No.</th>
+                  <td mat-cell *matCellDef="let element;let i = index;">{{i+1}}</td>
+                </ng-container>
+              
+                <!-- Name Column -->
+                <ng-container matColumnDef="title">
+                  <th mat-header-cell *matHeaderCellDef> Title </th>
+                  <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+                </ng-container>
+              
+                <!-- Weight Column -->
+                <ng-container matColumnDef="description">
+                  <th mat-header-cell *matHeaderCellDef> Description </th>
+                  <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+                </ng-container>
+              
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+              <mat-paginator [length]="100"
+                       [hidePageSize]="true"
+                       [pageSizeOptions]="[10, 25, 100]">
+              </mat-paginator>
+       
+            </div>
 <app-footer></app-footer>

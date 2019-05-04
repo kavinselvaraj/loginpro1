@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,FormGroup,Validators} from '@angular/forms';
 import {Router,ActivatedRouteSnapshot} from '@angular/router';
-import {ImageUploadService} from '../image-upload.service'
+import {ImageUploadService} from '../image-upload.service';
 @Component({
   selector: 'app-add-post',
   templateUrl: './add-post.component.html',
@@ -28,7 +28,6 @@ export class AddPostComponent implements OnInit {
     var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
     var pattern = /image-*/;
     var reader = new FileReader();
-    
     if (!file.type.match(pattern)) {
       alert('invalid format');
       return;
@@ -40,7 +39,6 @@ export class AddPostComponent implements OnInit {
   _handleReaderLoaded(e) {
     let reader = e.target;
     this.PhotoURL = reader.result;
-    console.log(this.PhotoURL)
     this.imageError = true;
     this.showImage = true;
   }
@@ -54,7 +52,8 @@ export class AddPostComponent implements OnInit {
       this.imageError=true;
       this.imagservice.imageUpload(this.addpostform.value).subscribe(data=>{
         if(data['message']=='ok' && data['result'] !=''){
-         this.router.navigate(['/dashboard']);
+          this.resetForm(this.addpostform);
+          this.postsubmit=false;
         }
         else{
           this.postsubmit=false;
@@ -62,7 +61,9 @@ export class AddPostComponent implements OnInit {
         }
       });
     }
-
   }
+  resetForm(form){
+    form.reset();
+    }
   
 }

@@ -1,0 +1,19 @@
+<app-header></app-header>
+<div class="main-panel">
+    <div class="content-wrapper">
+      <div class="card-columns">
+    <div class="card" *ngFor='let data of news'>
+      <img class="card-img-top" src={{sample+data.image_path}} alt="Card image cap">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-4">
+            <h1>{{data.title}}</h1>
+            <p>{{data.description}}</p>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+</div>
+</div>
+<app-footer></app-footer>

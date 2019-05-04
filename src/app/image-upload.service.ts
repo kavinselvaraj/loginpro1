@@ -9,7 +9,12 @@ export class ImageUploadService {
   constructor(private _http:HttpClient) { }
   public imageUpload(value){
     return this._http.post('http://localhost:3200/addpost/addblog',value).pipe(map(data=>{
-      return true;
+      return data;
+    }))
+  }
+  blog(){
+    return this._http.get('http://localhost:3200/addpost/fetchblog').pipe(map(res=>{
+      return res;
     }))
   }
 }
