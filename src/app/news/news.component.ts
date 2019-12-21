@@ -11,12 +11,12 @@ export class NewsComponent implements OnInit {
   constructor(private imagservice:ImageUploadService) { }
 
   ngOnInit() {
-    this.newsetch();
+    this.newsfetch();
   }
-  newsetch(){
+  newsfetch(){
     this.imagservice.blog().subscribe(data=>
       {
-        this.sample='http://182.72.85.21/angular-pro/loginback/loginback';
+        this.sample='http://192.168.43.212/angular-pro/loginback/loginback';
         
         //console.log(this.sample)
         this.news=data['result'];

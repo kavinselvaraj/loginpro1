@@ -1,0 +1,6 @@
+::ng-deep body{
+    background-color: red;
+    background-size: cover;
+    background-repeat: repeat;
+    margin: 0;
+}
